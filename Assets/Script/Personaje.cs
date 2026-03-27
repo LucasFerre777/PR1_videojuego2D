@@ -19,11 +19,7 @@ public class Personaje : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SumaEntreDecenas = Sumar(10,20,3.8f);
-
         Debug.Log(this.transform.position.x);
-        Debug.Log(SumaEntreDecenas);
-
     }
 
     // Update is called once per frame
@@ -44,10 +40,10 @@ public class Personaje : MonoBehaviour
     }
   
 
-    float Sumar(int num1, int num2, float num3)
+    int Sumar(int num1, int num2)
     {
         
-        float suma = num1 + num2 + num3;
+        int suma = num1 + num2;
 
         return suma;
     }
