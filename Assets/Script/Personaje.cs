@@ -6,6 +6,7 @@ public class Personaje : MonoBehaviour
 {
     public float velocidad = 0.5f;
     public float impulsoSalto = 5;
+    public GameObject senyal;
 
     bool puedoSaltar = false;
 
@@ -22,6 +23,10 @@ public class Personaje : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
+        senyal = GameObject.Find("sign");
+
+        senyal.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -32,8 +37,6 @@ public class Personaje : MonoBehaviour
         Vector2 moveInput = InputSystem.actions["Move"].ReadValue<Vector2>();
 
         this.transform.Translate(moveInput.x*velocidad, 0 , 0);
-
-        //moveinput.x = (-1:A) (1:D)
 
 
         //Flipear al caminar
@@ -64,8 +67,6 @@ public class Personaje : MonoBehaviour
 
         Debug.Log(puedoSaltar);
 
-        
-
         //Saltar
 
         bool salto = InputSystem.actions["Jump"].WasPressedThisFrame();
@@ -73,6 +74,31 @@ public class Personaje : MonoBehaviour
         if(salto == true && puedoSaltar == true)
         {
             rb.AddForce(transform.up*impulsoSalto,ForceMode2D.Impulse);
+        }
+
+        
+        //Cualquier cambio de estado durante el salto:
+
+        if(puedoSaltar == true)
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.white;
+            senyal.SetActive(false);
+
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.red;
+            senyal.SetActive(true);
+
+        }
+
+        //Disparar
+
+        bool disparo = InputSystem.actions["Attack"].WasPressedThisFrame();
+
+        if (disparo)
+        {
+            Instantiate(senyal, new Vector3 (0,0,0), Quaternion.identity);
         }
 
     }
