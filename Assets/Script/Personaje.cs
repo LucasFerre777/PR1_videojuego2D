@@ -7,6 +7,8 @@ public class Personaje : MonoBehaviour
     public float velocidad = 0.5f;
     public float impulsoSalto = 5;
 
+    bool puedoSaltar = false;
+
     Rigidbody2D rb;
 
     public Vector3 inicioPersonaje = new Vector3(1,1,0);
@@ -32,6 +34,8 @@ public class Personaje : MonoBehaviour
         this.transform.Translate(moveInput.x*velocidad, 0 , 0);
 
         //moveinput.x = (-1:A) (1:D)
+
+
         //Flipear al caminar
 
         if(moveInput.x < 0)
@@ -43,13 +47,31 @@ public class Personaje : MonoBehaviour
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
 
+        //Esto para que al saltar determine donde está el suelo desde el personaje con un rayo
+
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
+        Debug.DrawRay(transform.position, Vector2.down*0.5f, Color.red);
+
+        if(hit.collider == true)
+        {
+            puedoSaltar = true;
+        }
+        else
+        {
+            puedoSaltar = false;
+        }
+
+        Debug.Log(puedoSaltar);
+
+        
+
         //Saltar
 
         bool salto = InputSystem.actions["Jump"].WasPressedThisFrame();
 
-        if(salto == true)
+        if(salto == true && puedoSaltar == true)
         {
-            Debug.Log("salto");
             rb.AddForce(transform.up*impulsoSalto,ForceMode2D.Impulse);
         }
 
