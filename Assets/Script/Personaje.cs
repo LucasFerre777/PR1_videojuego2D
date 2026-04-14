@@ -7,10 +7,13 @@ public class Personaje : MonoBehaviour
     public float velocidad = 0.5f;
     public float impulsoSalto = 5;
     public GameObject senyal;
+    GameObject respawn;
 
     bool puedoSaltar = false;
 
     Rigidbody2D rb;
+
+    Animator controlAnimacion;
 
     public Vector3 inicioPersonaje = new Vector3(1,1,0);
 
@@ -27,12 +30,16 @@ public class Personaje : MonoBehaviour
 
         senyal.SetActive(false);
 
+        controlAnimacion = GetComponent<Animator>();
+
+        respawn = GameObject.Find("respawn");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         //caminar izquierda - derecha
         Vector2 moveInput = InputSystem.actions["Move"].ReadValue<Vector2>();
 
@@ -49,6 +56,18 @@ public class Personaje : MonoBehaviour
         {
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
+
+        //animacion caminado
+
+        if(moveInput.x != 0)
+        {
+            controlAnimacion.SetBool("activaCamina", true);
+        }
+        else
+        {
+            controlAnimacion.SetBool("activaCamina", false);
+        }
+
 
         //Esto para que al saltar determine donde está el suelo desde el personaje con un rayo
 
@@ -102,6 +121,40 @@ public class Personaje : MonoBehaviour
         }
 
     }
+
+    // para hacer que un objeto cambie de estado cuando lo toca el pj
+
+    /*
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("Colision con: " + col.gameObject.name);
+
+        if(col.gameObject.name == "ladrillo")
+        {
+            col.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+
+    }
+    */
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Trigger con: " + col.gameObject.name);
+
+        if(col.gameObject.name == "pincho")
+        {
+            GameManager.vidas -= 1;
+            col.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            transform.position = respawn.transform.position;
+        }
+
+        if(col.gameObject.name == "coin")
+        {
+            GameManager.puntos += 10;
+            Destroy(col.gameObject, 0.3f);
+        }
+    }
+    
+    //me falta lo del respawn
 
 }
 
