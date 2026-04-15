@@ -111,15 +111,6 @@ public class Personaje : MonoBehaviour
 
         }
 
-        //Disparar
-
-        bool disparo = InputSystem.actions["Attack"].WasPressedThisFrame();
-
-        if (disparo)
-        {
-            Instantiate(senyal, new Vector3 (0,0,0), Quaternion.identity);
-        }
-
     }
 
     // para hacer que un objeto cambie de estado cuando lo toca el pj
@@ -154,7 +145,20 @@ public class Personaje : MonoBehaviour
         }
     }
     
-    //me falta lo del respawn
+
+
+    //Hacer que la moneda suba y desaparezca animandolo
+    //descargar .net 10.0 (aun no se para que sirve)
+    /*meter al script de coin:
+     if(col.gameObject.name == "personaje")
+        {
+            GameManager.puntos += 10;
+            gameObject.GetComponent<animator>().SetBool("obtenerCoin"), true); <- esto es para que la animacion idle dela coin pase a la nueva
+            Destroy(this.gameObject, 0.3f);
+        }
+        recuerda eliminar esto de este script
+        */
+
 
 }
 
