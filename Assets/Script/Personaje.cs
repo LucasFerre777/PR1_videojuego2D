@@ -17,6 +17,8 @@ public class Personaje : MonoBehaviour
 
     public Vector3 inicioPersonaje = new Vector3(1,1,0);
 
+    public bool direcBalaDcha = true;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,10 +52,12 @@ public class Personaje : MonoBehaviour
 
         if(moveInput.x < 0)
         {
+            direcBalaDcha = false;
             this.GetComponent<SpriteRenderer>().flipX = true;
         }
         else if(moveInput.x > 0)
         {
+            direcBalaDcha = true;
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
 
