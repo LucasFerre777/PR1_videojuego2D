@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class CoinScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,4 +13,27 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         
     }
+
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+   
+
+     if(col.gameObject.name == "Personaje")
+        {
+            GameManager.puntos += 10;
+            gameObject.GetComponent<Animator>().SetBool("obtenerCoin", true); //me falta cambiar la animacion!!
+            Destroy(this.gameObject, 0.3f);
+        }
+
+
+
+    }
+    
+
+
+
+
+
+
 }

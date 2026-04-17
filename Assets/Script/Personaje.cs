@@ -134,35 +134,35 @@ public class Personaje : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("Trigger con: " + col.gameObject.name);
+        //muerte por pincho
 
         if(col.gameObject.name == "pincho")
         {
-            GameManager.vidas -= 1;
+            
             col.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            transform.position = respawn.transform.position;
+            Muerte();
         }
 
-        if(col.gameObject.name == "coin")
+        //checkpoint
+
+        if(col.gameObject.name == "checkpoint")
         {
-            GameManager.puntos += 10;
-            Destroy(col.gameObject, 0.3f);
+            respawn.transform.position = col.transform.position;
         }
+
     }
+
+    
+    
     
 
+    public void Muerte()
+    {
+        GameManager.vidas -= 1;
+        transform.position = respawn.transform.position;
 
-    //Hacer que la moneda suba y desaparezca animandolo
-    //descargar .net 10.0 (aun no se para que sirve)
-    /*meter al script de coin:
-     if(col.gameObject.name == "personaje")
-        {
-            GameManager.puntos += 10;
-            gameObject.GetComponent<animator>().SetBool("obtenerCoin"), true); <- esto es para que la animacion idle dela coin pase a la nueva
-            Destroy(this.gameObject, 0.3f);
-        }
-        recuerda eliminar esto de este script
-        */
-
+    }
+    
 
 }
 

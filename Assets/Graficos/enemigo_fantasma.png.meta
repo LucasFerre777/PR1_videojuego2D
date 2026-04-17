@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 975143bae3c9aae4299271b0c195d914
+guid: c226305ed1eb6f04194a5ea11b06ae46
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1671066698718037061
-    second: Decor_Statue_0
+      213: -2784312973224158599
+    second: enemigo_fantasma_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Decor_Statue_0
+      name: enemigo_fantasma_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 247
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 544c21d0f42d03710800000000000000
-      internalID: 1671066698718037061
+      spriteID: 97a567f4a122c59d0800000000000000
+      internalID: -2784312973224158599
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Decor_Statue_0: 1671066698718037061
+      enemigo_fantasma_0: -2784312973224158599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

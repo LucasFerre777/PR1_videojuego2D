@@ -10,6 +10,8 @@ public class Bala : MonoBehaviour
 
     bool direccionPersonaje;
 
+    public float velocidadBala = 0.05f;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,17 +29,18 @@ public class Bala : MonoBehaviour
     void Update()
     {
        
-       transform.Rotate(0,0,0.5f);
        
        
        
         if (direccionPersonaje)
         {
-            disparo.transform.Translate(0.01f,0,0);
+            disparo.transform.Translate(velocidadBala,0,0);
+            transform.Rotate(0,0,0.5f);
         }
         else
         {
-            disparo.transform.Translate(-0.01f,0,0);
+            disparo.transform.Translate(velocidadBala*-1,0,0);
+            transform.Rotate(0,0,-0.5f);
         }
 
 

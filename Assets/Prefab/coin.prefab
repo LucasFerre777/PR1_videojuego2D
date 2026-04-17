@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 374063497024360030}
   - component: {fileID: 3116065809644166569}
   - component: {fileID: 2459246525702218891}
+  - component: {fileID: 4397759102718090153}
   m_Layer: 0
   m_Name: coin
   m_TagString: Untagged
@@ -152,3 +153,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.9375, y: 1.9375}
   m_Direction: 0
+--- !u!114 &4397759102718090153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668576002842974195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd37ff3abb9e52447bb6b1ad37fadfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinScript
