@@ -22,3 +22,5 @@ public class SeguimientoCam : MonoBehaviour
         transform.position = new Vector3(dondePersonaje.x, dondePersonaje.y, -10.0f);
     }
 }
+
+//me falta ponerle zonas muertas a la camara y en general lo que sea que hicimos en esta parte

@@ -19,6 +19,8 @@ public class Personaje : MonoBehaviour
 
     public bool direcBalaDcha = true;
 
+    public string direccionPersonaje = "quierto";
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,20 +47,27 @@ public class Personaje : MonoBehaviour
         //caminar izquierda - derecha
         Vector2 moveInput = InputSystem.actions["Move"].ReadValue<Vector2>();
 
-        this.transform.Translate(moveInput.x*velocidad, 0 , 0);
+        this.transform.Translate(moveInput.x*velocidad*Time.deltaTime, 0 , 0);
 
 
         //Flipear al caminar
+
 
         if(moveInput.x < 0)
         {
             direcBalaDcha = false;
             this.GetComponent<SpriteRenderer>().flipX = true;
+            direccionPersonaje = "izq";
         }
         else if(moveInput.x > 0)
         {
             direcBalaDcha = true;
             this.GetComponent<SpriteRenderer>().flipX = false;
+            direccionPersonaje = "dcha";
+        }
+        else
+        {
+            direccionPersonaje = "quieto";
         }
 
         //animacion caminado
@@ -114,6 +123,13 @@ public class Personaje : MonoBehaviour
             senyal.SetActive(true);
 
         }
+
+        if (transform.position.y <= -50)
+        {
+            Muerte();
+        }
+
+    
 
     }
 

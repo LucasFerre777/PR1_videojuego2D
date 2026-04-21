@@ -84,20 +84,12 @@ public class enemigoFantasmaScript : MonoBehaviour
                 transform.Translate(velocidadPatrulla*-1, 0, 0);
                 this.GetComponent<SpriteRenderer>().flipX = false;
             }
-            
-            
-
-            if(estado == "ataque")
-            {
-                transform.position = Vector3.MoveTowards(transform.position, Personaje.transform.position, velocidadAtaque);
-            }
-
-
-
-
         }
 
-
+        if(estado == "ataque")
+        {
+            transform.position = Vector3.MoveTowards(transform.position, Personaje.transform.position, velocidadAtaque);
+        }
 
 
     }
