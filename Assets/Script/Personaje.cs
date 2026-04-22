@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Personaje : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Personaje : MonoBehaviour
     public bool direcBalaDcha = true;
 
     public string direccionPersonaje = "quierto";
+
+    bool estoyAzul = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -113,13 +116,13 @@ public class Personaje : MonoBehaviour
 
         if(puedoSaltar == true)
         {
-            this.GetComponent<SpriteRenderer>().color = Color.white;
+            //this.GetComponent<SpriteRenderer>().color = Color.white;
             senyal.SetActive(false);
 
         }
         else
         {
-            this.GetComponent<SpriteRenderer>().color = Color.red;
+            //this.GetComponent<SpriteRenderer>().color = Color.red;
             senyal.SetActive(true);
 
         }
@@ -179,6 +182,23 @@ public class Personaje : MonoBehaviour
 
     }
     
+
+    //esto es para el ui canvas
+
+    public void CambioColor()
+    {
+        if (estoyAzul)
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.white;
+            estoyAzul = false;
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.blue;
+            estoyAzul = true;
+        }
+        
+    }
 
 }
 
